@@ -1,5 +1,6 @@
 import io.vertx.ext.web.Router
 import io.vertx.ext.web.handler.BodyHandler
+import io.vertx.ext.web.handler.StaticHandler
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
 import io.vertx.core.json.Json
@@ -7,6 +8,10 @@ import io.vertx.core.json.Json
 def server = vertx.createHttpServer()
 def router = Router.router(vertx)
 router.route().handler(BodyHandler.create())
+
+router.route("/static/*").handler(
+  StaticHandler.create().setCachingEnabled(false)
+)
 
 /*
 assault
