@@ -1,0 +1,17 @@
+{
+  "name": "dotnet",
+  "authors": [
+    "carlogilmar <carlogilmar12@gmail.com>"
+  ],
+  "description": "",
+  "main": "webroot/",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
