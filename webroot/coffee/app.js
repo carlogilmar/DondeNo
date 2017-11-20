@@ -17,9 +17,8 @@
 
     UrlManager.prototype.start = function() {
       this.routes = {
-        '/pruebauno': this.templateController.prueba,
-        '/pruebados': this.templateController.pruebados,
-        '/pruebatres': this.templateController.pruebatres
+        '/statics': this.templateController.statics,
+        '/register': this.templateController.register
       };
       return this.urlMappings();
     };

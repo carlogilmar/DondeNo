@@ -1,15 +1,10 @@
 class @.TemplateController
-  prueba: ->
-    html = ViewResolver.mergeViewWithModel "#dashboard"
+  statics: ->
+    console.log "Estadisticas route"
+    html = ViewResolver.mergeViewWithModel "#statics"
     $("#handlebars").html(html)
 
-  pruebados: ->
-    html = ViewResolver.mergeViewWithModel "#info-hb"
-    console.log html
-    $("#handlebars").html(html)
-
-  pruebatres: ->
-    console.log "Prueba tres"
-    html = ViewResolver.mergeViewWithModel "#pruebatres"
-    console.log html
+  register: ->
+    console.log "Rgister route"
+    html = ViewResolver.mergeViewWithModel "#register"
     $("#handlebars").html(html)

@@ -10,9 +10,8 @@ class @.UrlManager
 
   start: ->
     @routes =
-      '/pruebauno': @templateController.prueba
-      '/pruebados': @templateController.pruebados
-      '/pruebatres': @templateController.pruebatres
+      '/statics': @templateController.statics
+      '/register': @templateController.register
     @urlMappings()
 
   urlMappings: ->

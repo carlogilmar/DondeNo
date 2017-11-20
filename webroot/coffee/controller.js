@@ -3,24 +3,17 @@
   this.TemplateController = (function() {
     function TemplateController() {}
 
-    TemplateController.prototype.prueba = function() {
+    TemplateController.prototype.statics = function() {
       var html;
-      html = ViewResolver.mergeViewWithModel("#dashboard");
+      console.log("Estadisticas route");
+      html = ViewResolver.mergeViewWithModel("#statics");
       return $("#handlebars").html(html);
     };
 
-    TemplateController.prototype.pruebados = function() {
+    TemplateController.prototype.register = function() {
       var html;
-      html = ViewResolver.mergeViewWithModel("#info-hb");
-      console.log(html);
-      return $("#handlebars").html(html);
-    };
-
-    TemplateController.prototype.pruebatres = function() {
-      var html;
-      console.log("Prueba tres");
-      html = ViewResolver.mergeViewWithModel("#pruebatres");
-      console.log(html);
+      console.log("Rgister route");
+      html = ViewResolver.mergeViewWithModel("#register");
       return $("#handlebars").html(html);
     };
 
