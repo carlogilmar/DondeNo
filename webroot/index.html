@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>¿Dónde No?</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="third-party/bootstrap/dist/css/bootstrap.min.css">
@@ -10,12 +10,39 @@
 
 <!-- Handlebars templates -->
 <script id="statics" type="text/x-handlebars-template">
+	<div class="jumbotron">
+    <h1>¿Dónde No?</h1>
+    <p> Este es un proyecto para conocer los principales índices de violencia a nuestros alrededores. Creado con VertX, Groovy, CoffeeScript, y con una aplicación móvil con swift. </p>
+		<br> <a href="#/register" class="btn btn-primary">¡Agrega un nuevo incidente delictivo!</a>
+    </p>
+  </div>
+	<div class="container">
+    <div class="row">
+      <div class="col-lg-4 text-center">
+        <img class="rounded-circle" src="http://clipartist.net/openclipart.org/2013/Mo/simple_things/robo_2_geometry-1969px.png" alt="Generic placeholder image" width="140" height="140">
+        <h2>¡Reporta un incidente!</h2>
+        <p>Mediante esta plataforma podrás agregar un reporte para que lo tomemos en cuenta y juntos generemos información de confianza</p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4 text-center">
+        <img class="rounded-circle" src="http://clipartist.net/openclipart.org/2013/Mo/robos/robo_4-555px.png" alt="Generic placeholder image" width="140" height="140">
+        <h2>¡Infórmate!</h2>
+        <p> Aquí podras ver y conocer los reportes estadísticos sobre la delincuencia. Mira más abajo! </p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4 text-center">
+        <img class="rounded-circle" src="http://clipartist.net/openclipart.org/2013/Mo/simple_things/robo_3_geometry-1969px.png" alt="Generic placeholder image" width="140" height="140">
+        <h2>¡Conoce a detalle!</h2>
+				<p>Podrás conocer las incidencias de forma individual para estar más informado. Sigue apoyándo!</p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+	</div>
 	<div class="text-center">
 		<h2>Mostrando estadísticas</h2>
 		{{#each registers}}
 			<b>Registro</b>: {{type}} <b>Valor</b>: {{value}} <br>
     {{/each}}
 	</div>
+
 </script>
 
 <script id="register" type="text/x-handlebars-template">
@@ -150,30 +177,16 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="http://localhost:8080/static/">¿Dónde No?</a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li role="separator" class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
-                </ul>
+              <li class="active"><a href="http://localhost:8080/static/">Inicio</a></li>
+              <li><a href="#/info">Sobre este proyecto</a></li>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-              <li><a href="../navbar-static-top/">Static top</a></li>
-              <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+              <li><a href="#/register">¡Registra un incidente!</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -190,7 +203,6 @@
       </p>
     </div>
   </div>
-
 </div> <!-- /container -->
 
 
