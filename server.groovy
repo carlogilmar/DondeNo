@@ -30,7 +30,7 @@ router.get("/statics").handler({ routingContext ->
 			routingContext.response()
 			.setStatusCode(200)
 			.putHeader("content-type", "application/json; charset=utf-8")
-			.end( Json.encodePrettily(reply.result().body()) )
+			.end( Json.encodePrettily([registers:reply.result().body()]) )
 		}
 	}
 })

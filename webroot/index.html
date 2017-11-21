@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="third-party/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="third-party/chartist/dist/chartist.css">
 </head>
 <body>
 
@@ -12,6 +13,7 @@
 <script id="statics" type="text/x-handlebars-template">
 	<div class="jumbotron">
     <h1>¿Dónde No?</h1>
+		<h3>Al día de hoy tenemos <u>{{counter}}</u> reportes de incidencia delictiva!<h3>
     <p> Este es un proyecto para conocer los principales índices de violencia a nuestros alrededores. Creado con VertX, Groovy, CoffeeScript, y con una aplicación móvil con swift. </p>
 		<br> <a href="#/register" class="btn btn-primary">¡Agrega un nuevo incidente delictivo!</a>
     </p>
@@ -36,12 +38,41 @@
     </div><!-- /.row -->
 
 	</div>
+
+	<div class="chart"></div>
+
+  {{message}}
+
 	<div class="text-center">
-		<h2>Mostrando estadísticas</h2>
-		{{#each registers}}
-			<b>Registro</b>: {{type}} <b>Valor</b>: {{value}} <br>
-    {{/each}}
+		<h3>¡Tenemos <span class="label label-default">{{counter}}</span> registros!</h3><br>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Tipo</th>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+          <th class="text-center" scope="col">Delegación</th>
+          <th class="text-center" scope="col">Calle</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each registers}}
+					<tr>
+						<td><span class="label label-primary"> {{type}}</span></td>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+						<td>{{delegation}}</td>
+						<td>{{street}}</td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+
+
 	</div>
+
 
 </script>
 
@@ -104,11 +135,11 @@
       <label class="col-md-4 control-label" for="radios">Gravedad</label>
       <div class="col-md-6">
         <label class="radio-inline" for="radios-0">
-          <input type="radio" name="previousComplaince" id="previousComplaince" value="true" checked="checked">
+          <input type="radio" name="previousComplaince" id="previousComplaince" value=true checked="checked">
           Se realizó
         </label>
         <label class="radio-inline" for="radios-1">
-          <input type="radio" name="previousComplaince" id="previousComplaince" value="false">
+          <input type="radio" name="previousComplaince" id="previousComplaince" value=false>
           No se realizó
         </label>
       </div>
@@ -119,23 +150,23 @@
       <label class="col-md-4 control-label" for="radios">Gravedad</label>
       <div class="col-md-6">
         <label class="radio-inline" for="radios-0">
-          <input type="radio" name="value" id="value" value="1" checked="checked">
+          <input type="radio" name="value" id="value" value=1 checked="checked">
           Baja
         </label>
         <label class="radio-inline" for="radios-1">
-          <input type="radio" name="value" id="value" value="2">
+          <input type="radio" name="value" id="value" value=2>
           Baja media
         </label>
         <label class="radio-inline" for="radios-2">
-          <input type="radio" name="value" id="value" value="3">
+          <input type="radio" name="value" id="value" value=3>
           Media
         </label>
         <label class="radio-inline" for="radios-3">
-          <input type="radio" name="value" id="value" value="4">
+          <input type="radio" name="value" id="value" value=4>
           Media Alta
         </label>
         <label class="radio-inline" for="radios-4">
-          <input type="radio" name="value" id="value" value="5">
+          <input type="radio" name="value" id="value" value=5>
           Alta
         </label>
       </div>
@@ -168,7 +199,7 @@
 <!-- Handlebars templates end-->
 
       <!-- Static navbar -->
-      <nav class="navbar navbar-default">
+      <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -216,6 +247,7 @@
 <script src="third-party/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="third-party/director/build/director.js"></script>
 <script src="third-party/handlebars/handlebars.js"></script>
+<script src="third-party/chartist/dist/chartist.min.js"></script>
 <script src="coffee/manager.js"></script>
 <script src="coffee/controller.js"></script>
 <script src="coffee/app.js"></script>

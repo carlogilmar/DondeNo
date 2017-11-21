@@ -1,11 +1,11 @@
 {
-    "type": "violation",
+    "type": "assault",
     "email":"carlo@makingdevs.com",
     "delegation":"MagdalenaContreras",
     "street":"Luis Cabrera",
     "description":"Fue un asalto a mano armada rey",
-    "previousComplaince":true,
-    "value": 6,
+    "previousComplaince":"true",
+    "value": 5,
     "date":"2017-11-10"
 }
 
