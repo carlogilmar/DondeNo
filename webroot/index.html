@@ -16,9 +16,124 @@
 </script>
 
 <script id="register" type="text/x-handlebars-template">
-	<div class="text-center">
-		<h2>Registrando</h2>
-	</div>
+  <div class="row">
+    <h1 class="text-center">Nuevo Delito</h1><br>
+    <form action="/newRegister" method="POST" class="form-horizontal" id="registerForm">
+    <fieldset>
+    <!-- Form Name -->
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Correo Electrónico</label>
+      <div class="col-md-4">
+				<input type="email" id="email" name="email" required class="form-control"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label">Delegación dónde ocurrió</label>
+      <div class="col-md-4">
+				<input type="text" name="delegation" id="delegation" required class="form-control"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label">Calle dónde ocurrió</label>
+      <div class="col-md-4">
+				<input type="text" name="street" id="street" required class="form-control"/>
+      </div>
+    </div>
+
+    <!-- Select Basic -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="Tipo de Delito">Tipo de Delito</label>
+      <div class="col-md-4">
+        <select id="type" name="type" required class="form-control">
+          <option value="assault">Asalto</option>
+          <option value="violation">Violación</option>
+          <option value="physicalViolence">Violencia Física</option>
+          <option value="theftOfAutoParts">Robo de Autopartes</option>
+          <option value="extortion">Extorsion</option>
+          <option value="weaponInjury">Lesion con Arma Blanca</option>
+          <option value="robberyWithViolence">Robo con Violencia</option>
+          <option value="vehicleTheft">Robo a Vehículo</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Textarea -->
+    <div class="form-group">
+      <label class="col-md-4 control-label">Descripción</label>
+      <div class="col-md-4">
+        <textarea class="form-control" id="description" name="description"></textarea>
+      </div>
+    </div>
+
+    <!-- Multiple Radios (inline) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="radios">Gravedad</label>
+      <div class="col-md-6">
+        <label class="radio-inline" for="radios-0">
+          <input type="radio" name="previousComplaince" id="previousComplaince" value="true" checked="checked">
+          Se realizó
+        </label>
+        <label class="radio-inline" for="radios-1">
+          <input type="radio" name="previousComplaince" id="previousComplaince" value="false">
+          No se realizó
+        </label>
+      </div>
+    </div>
+
+    <!-- Multiple Radios (inline) -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="radios">Gravedad</label>
+      <div class="col-md-6">
+        <label class="radio-inline" for="radios-0">
+          <input type="radio" name="value" id="value" value="1" checked="checked">
+          Baja
+        </label>
+        <label class="radio-inline" for="radios-1">
+          <input type="radio" name="value" id="value" value="2">
+          Baja media
+        </label>
+        <label class="radio-inline" for="radios-2">
+          <input type="radio" name="value" id="value" value="3">
+          Media
+        </label>
+        <label class="radio-inline" for="radios-3">
+          <input type="radio" name="value" id="value" value="4">
+          Media Alta
+        </label>
+        <label class="radio-inline" for="radios-4">
+          <input type="radio" name="value" id="value" value="5">
+          Alta
+        </label>
+      </div>
+    </div>
+
+	  <div class="form-group">
+        <label class="col-md-4 control-label" for="singlebutton">Fecha del incidente</label>
+	      <div class="col-md-4">
+            <div class='input-group date' id='datetimepicker11'>
+                <input type='date' name="date" id="date" class="form-control" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="singlebutton"></label>
+      <div class="col-md-4">
+        <a id="submitRegister" class="btn btn-link">Agregar</a>
+      </div>
+    </div>
+    </fieldset>
+    </form>
+  </div>
 </script>
 <!-- Handlebars templates end-->
 
@@ -60,25 +175,25 @@
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
-<div class="container">
 
-      <div id="handlebars">
-			<div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>
-					<br> <a href="#/statics">Ruta a estadísticas</a>
-					<br> <a href="#/register">Ruta a nuevos asaltos</a>
-        </p>
-      </div>
-      </div>
+<div class="container">
+  <div id="handlebars">
+	  <div class="jumbotron">
+      <h1>Navbar example</h1>
+      <p>This example is a quick exercise to illustrate how the default, static navbar and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+      <p>
+			<br> <a href="#/statics">Ruta a estadísticas</a>
+			<br> <a href="#/register">Ruta a nuevos asaltos</a>
+      </p>
+    </div>
+  </div>
 
 </div> <!-- /container -->
 
 
 <footer class="text-muted">
   <div class="container">
-    <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+    <p> Proyecto realizado por Carlo Gilmar Padilla Santana </p>
   </div>
 </footer>
 

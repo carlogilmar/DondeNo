@@ -35,14 +35,33 @@ router.get("/statics").handler({ routingContext ->
 	}
 })
 
-router.post("/newRegister").handler { routingContext ->
-	def bodyRequest = routingContext.getBodyAsJson()
-	println "Request for new register in ${bodyRequest.type}"
-	vertx.eventBus().send("com.carlogilmar.new.register", bodyRequest)
+router.post("/mobileRegister").handler { routingContext ->
+  def bodyRequest = routingContext.getBodyAsJson()
+  vertx.eventBus().send("com.carlogilmar.new.register", bodyRequest)
+  println bodyRequest
 	routingContext.response()
 	.setStatusCode(201)
 	.putHeader("content-type", "application/json; charset=utf-8")
-	.end("Reporte Creado!")
+	.end("REST: Reporte Creado!")
+}
+
+router.post("/newRegister").handler { routingContext ->
+  def params = routingContext.request().params()
+  def registerMessage = [
+                          type:params.type,
+                          email:params.email,
+                          delegation:params.delegation,
+                          street:params.street,
+                          description:params.description,
+                          previousComplaince:params.previousComplaince,
+                          date:params.date
+                        ]
+  println registerMessage
+	vertx.eventBus().send("com.carlogilmar.new.register", registerMessage)
+	routingContext.response()
+	.setStatusCode(201)
+	.putHeader("content-type", "application/json; charset=utf-8")
+	.end("FORM: Reporte Creado!")
 }
 
 router.get("/vehicleTheft").handler({ routingContext ->

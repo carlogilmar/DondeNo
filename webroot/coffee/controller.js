@@ -5,19 +5,52 @@
 
     TemplateController.prototype.statics = function() {
       var html;
-      console.log("Estadisticas route");
       html = ViewResolver.mergeViewWithModel("#statics");
-      return $("#handlebars").html(html);
+      $("#handlebars").html(html);
+      $.ajax({
+        url: 'http://localhost:8080/statics',
+        type: 'get',
+        dataType: 'json',
+        contentType: 'application/json; charset=UTF-8'
+      });
+      ({
+        error: function(jqXHR, textStatus, errorThrown) {}
+      });
+      console.log("Error");
+      ({
+        success: function(data, textStatus, jqXHR) {}
+      });
+      return console.log("Lo logramos");
     };
 
     TemplateController.prototype.register = function() {
       var html;
-      console.log("Rgister route");
       html = ViewResolver.mergeViewWithModel("#register");
-      return $("#handlebars").html(html);
+      $("#handlebars").html(html);
+      return Validator.validateNewForm();
     };
 
     return TemplateController;
+
+  })();
+
+  this.ApiController = (function() {
+    function ApiController() {}
+
+    ApiController.add = function() {
+      return $.ajax({
+        url: 'http://localhost:8080/newRegister',
+        type: 'post',
+        data: $('#registerForm').serialize(),
+        success: function() {}
+      }, console.log("Registro okas!"), {
+        error: function() {
+          return console.log("Error al agregar");
+        }
+      });
+    };
+
+    return ApiController;
 
   })();
 

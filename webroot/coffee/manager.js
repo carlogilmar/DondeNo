@@ -14,4 +14,18 @@
 
   })();
 
+  this.Validator = (function() {
+    function Validator() {}
+
+    Validator.validateNewForm = function() {
+      return $('#submitRegister').click(function() {
+        console.log("Click para registro");
+        return ApiController.add();
+      });
+    };
+
+    return Validator;
+
+  })();
+
 }).call(this);
