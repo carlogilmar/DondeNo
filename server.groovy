@@ -54,7 +54,8 @@ router.post("/newRegister").handler { routingContext ->
                           street:params.street,
                           description:params.description,
                           previousComplaince:params.previousComplaince,
-                          date:params.date
+                          date:params.date,
+													value:params.value
                         ]
   println registerMessage
 	vertx.eventBus().send("com.carlogilmar.new.register", registerMessage)
