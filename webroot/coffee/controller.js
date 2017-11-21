@@ -3,25 +3,16 @@
   this.TemplateController = (function() {
     function TemplateController() {}
 
-    TemplateController.prototype.statics = function() {
-      var html;
-      html = ViewResolver.mergeViewWithModel("#statics");
-      $("#handlebars").html(html);
-      $.ajax({
-        url: 'http://localhost:8080/statics',
-        type: 'get',
-        dataType: 'json',
-        contentType: 'application/json; charset=UTF-8'
-      });
-      ({
-        error: function(jqXHR, textStatus, errorThrown) {}
-      });
-      console.log("Error");
-      ({
-        success: function(data, textStatus, jqXHR) {}
-      });
-      return console.log("Lo logramos");
-    };
+    TemplateController.prototype.statics = function() {};
+
+    $.get('http://localhost:8080/statics', function(data) {
+      var context, html;
+      context = {
+        registers: data
+      };
+      html = ViewResolver.mergeViewWithModel("#statics", context);
+      return $("#handlebars").html(html);
+    });
 
     TemplateController.prototype.register = function() {
       var html;
@@ -43,7 +34,7 @@
         type: 'post',
         data: $('#registerForm').serialize(),
         success: function() {}
-      }, console.log("Registro okas!"), {
+      }, console.log("Registro agregado"), {
         error: function() {
           return console.log("Error al agregar");
         }

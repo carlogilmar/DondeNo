@@ -12,6 +12,9 @@
 <script id="statics" type="text/x-handlebars-template">
 	<div class="text-center">
 		<h2>Mostrando estadísticas</h2>
+		{{#each registers}}
+			<b>Registro</b>: {{type}} <b>Valor</b>: {{value}} <br>
+    {{/each}}
 	</div>
 </script>
 
@@ -201,8 +204,8 @@
 <script src="third-party/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="third-party/director/build/director.js"></script>
 <script src="third-party/handlebars/handlebars.js"></script>
-<script src="coffee/controller.js"></script>
 <script src="coffee/manager.js"></script>
+<script src="coffee/controller.js"></script>
 <script src="coffee/app.js"></script>
 <script src="coffee/main.js"></script>
 

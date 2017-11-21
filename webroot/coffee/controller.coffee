@@ -1,21 +1,10 @@
 class @.TemplateController
   statics: ->
-    html = ViewResolver.mergeViewWithModel "#statics"
-    $("#handlebars").html(html)
-    $.ajax
-      url: 'http://localhost:8080/statics'
-      type: 'get'
-      dataType: 'json'
-      contentType: 'application/json; charset=UTF-8'
-      #success: ->
-			#	console.log "Hicimos algo"
-			#error: ->
-      #	alert 'error al procesar'
-		  error: (jqXHR, textStatus, errorThrown) ->
-				console.log "Error"
-		  success: (data, textStatus, jqXHR) ->
-				console.log "Lo logramos"
-
+		$.get 'http://localhost:8080/statics', (data) ->
+			context =
+				registers: data
+			html = ViewResolver.mergeViewWithModel "#statics", context
+			$("#handlebars").html(html)
 
   register: ->
     html = ViewResolver.mergeViewWithModel "#register"
@@ -29,6 +18,6 @@ class @.ApiController
       type: 'post'
       data: $('#registerForm').serialize()
       success: ->
-		    console.log "Registro okas!"
+		    console.log "Registro agregado"
       error: ->
         console.log "Error al agregar"

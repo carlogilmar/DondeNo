@@ -20,7 +20,9 @@
     Validator.validateNewForm = function() {
       return $('#submitRegister').click(function() {
         console.log("Click para registro");
-        return ApiController.add();
+        ApiController.add();
+        alert("Registro agregado");
+        return $('#registerForm')[0].reset();
       });
     };
 
