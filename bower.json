@@ -18,6 +18,8 @@
     "bootstrap": "^3.3.7",
     "director": "^1.2.8",
     "handlebars": "^4.0.11",
-    "chartist": "^0.11.0"
+    "chartist": "^0.11.0",
+    "sockjs": "^0.3.4",
+    "vertx3-eventbus-client": "^3.5.0"
   }
 }
