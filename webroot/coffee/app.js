@@ -18,7 +18,8 @@
     UrlManager.prototype.start = function() {
       this.routes = {
         '/statics': this.templateController.statics,
-        '/register': this.templateController.register
+        '/register': this.templateController.register,
+        '/assaults': this.templateController.assaults
       };
       return this.urlMappings();
     };

@@ -23,6 +23,13 @@
       });
     });
 
+    TemplateController.prototype.assaults = function() {
+      var html;
+      console.log("Entrando a ver los asaltos");
+      html = ViewResolver.mergeViewWithModel("#assaults");
+      return $("#handlebars").html(html);
+    };
+
     TemplateController.prototype.register = function() {
       var html;
       html = ViewResolver.mergeViewWithModel("#register");

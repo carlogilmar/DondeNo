@@ -32,6 +32,10 @@ class @.TemplateController
 			  low: 0
 			  showArea: true)
 
+  assaults: ->
+    console.log "Entrando a ver los asaltos"
+    html = ViewResolver.mergeViewWithModel "#assaults"
+    $("#handlebars").html(html)
 
   register: ->
     html = ViewResolver.mergeViewWithModel "#register"

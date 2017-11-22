@@ -12,6 +12,7 @@ class @.UrlManager
     @routes =
       '/statics': @templateController.statics
       '/register': @templateController.register
+      '/assaults': @templateController.assaults
     @urlMappings()
 
   urlMappings: ->
