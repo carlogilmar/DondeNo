@@ -4,10 +4,17 @@ import io.vertx.ext.web.handler.StaticHandler
 import io.vertx.core.json.JsonObject
 import io.vertx.core.json.JsonArray
 import io.vertx.core.json.Json
+import io.vertx.ext.web.handler.sockjs.SockJSHandler
 
 def server = vertx.createHttpServer()
 def router = Router.router(vertx)
 router.route().handler(BodyHandler.create())
+
+
+// Create the event bus bridge and add it to the router.
+def opts = [outboundPermitteds:[[address:"com.makingdevs.email.success"]]]
+def ebHandler = SockJSHandler.create(vertx).bridge(opts)
+router.route("/eventbus/*").handler(ebHandler)
 
 router.route("/static/*").handler(
   StaticHandler.create().setCachingEnabled(false)
