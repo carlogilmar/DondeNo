@@ -33,9 +33,7 @@ class @.TemplateController
 			  showArea: true)
 
   assaults: ->
-    console.log "Entrando a ver los asaltos"
-    html = ViewResolver.mergeViewWithModel "#assaults"
-    $("#handlebars").html(html)
+    ApiController.showAssaults()
 
   register: ->
     html = ViewResolver.mergeViewWithModel "#register"
@@ -43,6 +41,7 @@ class @.TemplateController
     Validator.validateNewForm()
 
 class @.ApiController
+
 	@add: ->
     $.ajax
       url: 'http://localhost:8080/newRegister'
@@ -52,3 +51,10 @@ class @.ApiController
 		    console.log "Registro agregado"
       error: ->
         console.log "Error al agregar"
+
+  @showAssaults: ->
+    $.get 'http://localhost:8080/assault', (data) ->
+      console.log "Entrando a ver los asaltos"
+      console.log(data)
+      html = ViewResolver.mergeViewWithModel "#assaults"
+      $("#handlebars").html(html)

@@ -24,10 +24,7 @@
     });
 
     TemplateController.prototype.assaults = function() {
-      var html;
-      console.log("Entrando a ver los asaltos");
-      html = ViewResolver.mergeViewWithModel("#assaults");
-      return $("#handlebars").html(html);
+      return ApiController.showAssaults();
     };
 
     TemplateController.prototype.register = function() {
@@ -54,6 +51,16 @@
         error: function() {
           return console.log("Error al agregar");
         }
+      });
+    };
+
+    ApiController.showAssaults = function() {
+      return $.get('http://localhost:8080/assault', function(data) {
+        var html;
+        console.log("Entrando a ver los asaltos");
+        console.log(data);
+        html = ViewResolver.mergeViewWithModel("#assaults");
+        return $("#handlebars").html(html);
       });
     };
 
