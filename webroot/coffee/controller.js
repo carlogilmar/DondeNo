@@ -6,17 +6,49 @@
     TemplateController.prototype.statics = function() {};
 
     $.get('http://localhost:8080/statics', function(data) {
-      var context, html;
+      var assault, context, extortion, html, physicalViolence, robberyWithViolence, theftOfAutoParts, vehicleTheft, violation, weaponInjury;
+      assault = data.registers.filter(function(e) {
+        return e.type === 'assault';
+      });
+      violation = data.registers.filter(function(e) {
+        return e.type === 'violation';
+      });
+      physicalViolence = data.registers.filter(function(e) {
+        return e.type === 'physicalViolence';
+      });
+      theftOfAutoParts = data.registers.filter(function(e) {
+        return e.type === 'theftOfAutoParts';
+      });
+      extortion = data.registers.filter(function(e) {
+        return e.type === 'extortion';
+      });
+      weaponInjury = data.registers.filter(function(e) {
+        return e.type === 'weaponInjury';
+      });
+      robberyWithViolence = data.registers.filter(function(e) {
+        return e.type === 'robberyWithViolence';
+      });
+      vehicleTheft = data.registers.filter(function(e) {
+        return e.type === 'vehicleTheft';
+      });
       context = {
         registers: data.registers.reverse(),
         counter: data.registers.length,
-        message: data.message
+        message: data.message,
+        assault: assault,
+        violation: violation,
+        physicalViolence: physicalViolence,
+        theftOfAutoParts: theftOfAutoParts,
+        extortion: extortion,
+        weaponInjury: weaponInjury,
+        robberyWithViolence: robberyWithViolence,
+        vehicleTheft: vehicleTheft
       };
       html = ViewResolver.mergeViewWithModel("#statics", context);
       $("#handlebars").html(html);
       return new Chartist.Line('.chart', {
-        labels: [1, 2, 3, 4, 5, 6, 7, 8],
-        series: [[5, 9, 7, 8, 5, 3, 5, 4]]
+        labels: ["Asaltos", "Violaciones", "Violencia Física", "Robo de autopartes", "Extorsiones", "Lesión con arma blanca", "Robo con violencia", "Robo a vehículo"],
+        series: [[assault.length, violation.length, physicalViolence.length, theftOfAutoParts.length, extortion.length, weaponInjury.length, robberyWithViolence.length, vehicleTheft.length]]
       }, {
         low: 0,
         showArea: true
@@ -51,16 +83,6 @@
         error: function() {
           return console.log("Error al agregar");
         }
-      });
-    };
-
-    ApiController.showAssaults = function() {
-      return $.get('http://localhost:8080/assault', function(data) {
-        var html;
-        console.log("Entrando a ver los asaltos");
-        console.log(data);
-        html = ViewResolver.mergeViewWithModel("#assaults");
-        return $("#handlebars").html(html);
       });
     };
 

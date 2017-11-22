@@ -1,32 +1,48 @@
 class @.TemplateController
   statics: ->
 		$.get 'http://localhost:8080/statics', (data) ->
+			assault = data.registers.filter((e) -> e.type == 'assault')
+			violation = data.registers.filter((e) -> e.type == 'violation')
+			physicalViolence = data.registers.filter((e) -> e.type == 'physicalViolence')
+			theftOfAutoParts = data.registers.filter((e) -> e.type == 'theftOfAutoParts')
+			extortion = data.registers.filter((e) -> e.type == 'extortion')
+			weaponInjury = data.registers.filter((e) -> e.type == 'weaponInjury')
+			robberyWithViolence = data.registers.filter((e) -> e.type == 'robberyWithViolence')
+			vehicleTheft = data.registers.filter((e) -> e.type == 'vehicleTheft')
 			context =
 				registers: data.registers.reverse()
 				counter: data.registers.length
 				message: data.message
+				assault: assault
+				violation: violation
+				physicalViolence: physicalViolence
+				theftOfAutoParts: theftOfAutoParts
+				extortion: extortion
+				weaponInjury: weaponInjury
+				robberyWithViolence: robberyWithViolence
+				vehicleTheft: vehicleTheft
 			html = ViewResolver.mergeViewWithModel "#statics", context
 			$("#handlebars").html(html)
 			new (Chartist.Line)('.chart', {
 			  labels: [
-			    1
-			    2
-			    3
-			    4
-			    5
-			    6
-			    7
-			    8
+			    "Asaltos"
+			    "Violaciones"
+			    "Violencia Física"
+			    "Robo de autopartes"
+			    "Extorsiones"
+			    "Lesión con arma blanca"
+			    "Robo con violencia"
+			    "Robo a vehículo"
 			  ]
 			  series: [ [
-			    5
-			    9
-			    7
-			    8
-			    5
-			    3
-			    5
-			    4
+			    assault.length
+			    violation.length
+			    physicalViolence.length
+			    theftOfAutoParts.length
+			    extortion.length
+			    weaponInjury.length
+			    robberyWithViolence.length
+			    vehicleTheft.length
 			  ] ]
 			},
 			  low: 0
@@ -52,9 +68,3 @@ class @.ApiController
       error: ->
         console.log "Error al agregar"
 
-  @showAssaults: ->
-    $.get 'http://localhost:8080/assault', (data) ->
-      console.log "Entrando a ver los asaltos"
-      console.log(data)
-      html = ViewResolver.mergeViewWithModel "#assaults"
-      $("#handlebars").html(html)
