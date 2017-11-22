@@ -10,10 +10,6 @@
 <body>
 
 <!-- Handlebars templates -->
-<script id="assaults" type="text/x-handlebars-template">
-  <h1>Assaults Route Here</h1>
-</script>
-
 <script id="statics" type="text/x-handlebars-template">
 	<div class="jumbotron">
     <h1>¿Dónde No?</h1>
@@ -41,9 +37,12 @@
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
-	</div>
+	</div><br>
 
-	<div class="chart"></div>
+	<div class="jumbotron">
+		<h3 class="text-center">Estadísticas</h3>
+		<div class="chart"></div>
+	</div>
 
   {{message}}
 
@@ -73,11 +72,236 @@
         {{/each}}
       </tbody>
 		</table>
-
-
+		<h1> Datos Específicos </h1>
 	</div>
 
+<div class="row text-center" id="specific-data">
+  <div class="col-md-6">
+  	{{#if assault}}
+		<h4>Asaltos <span class="label label-default">{{assault.length}}</span></h4>
+    <table class="table table-condensed table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each assault}}
+					<tr>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+		{{else}}
+			<div class="jumbotron">
+				<h5> Sin datos de asaltos</h5>
+			</div>
+		{{/if}}
+	</div>
+  <div class="col-md-6">
+  	{{#if violation}}
+		<h4> Violaciones <span class="label label-default">{{violation.length}}</span></h4>
+    <table class="table table-condensed table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each violation}}
+					<tr>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+		{{else}}
+			<div class="jumbotron">
+				<h5> Sin datos de violaciones</h5>
+			</div>
+		{{/if}}
+	</div>
+</div>
 
+<div class="row text-center">
+  <div class="col-md-6">
+  	{{#if physicalViolence}}
+		<h4>Asaltos <span class="label label-default">{{physicalViolence.length}}</span></h4>
+    <table class="table table-condensed table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each physicalViolence}}
+					<tr>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+		{{else}}
+			<div class="jumbotron">
+				<h5> Sin datos de violencia física</h5>
+			</div>
+		{{/if}}
+	</div>
+  <div class="col-md-6">
+  	{{#if theftOfAutoParts}}
+		<h4> Robo de autopartes <span class="label label-default">{{theftOfAutoParts.length}}</span></h4>
+    <table class="table table-condensed table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each theftOfAutoParts}}
+					<tr>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+		{{else}}
+			<div class="jumbotron">
+				<h5> Sin datos de robo de autopartes</h5>
+			</div>
+		{{/if}}
+	</div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-6">
+  	{{#if extortion}}
+		<h4>Extorsiones <span class="label label-default">{{extortion.length}}</span></h4>
+    <table class="table table-condensed table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each extortion}}
+					<tr>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+		{{else}}
+			<div class="jumbotron">
+				<h5> Sin datos de extorsiones</h5>
+			</div>
+		{{/if}}
+	</div>
+  <div class="col-md-6">
+  	{{#if weaponInjury}}
+		<h4> Lesión con arma blanca <span class="label label-default">{{weaponInjury.length}}</span></h4>
+    <table class="table table-condensed table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each weaponInjury}}
+					<tr>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+		{{else}}
+			<div class="jumbotron">
+				<h5> Sin datos de lesión con arma blanca</h5>
+			</div>
+		{{/if}}
+	</div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-6">
+  	{{#if robberyWithViolence}}
+		<h4> Robo con violencia <span class="label label-default">{{robberyWithViolence.length}}</span></h4>
+    <table class="table table-condensed table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each robberyWithViolence}}
+					<tr>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+		{{else}}
+			<div class="jumbotron">
+				<h5> Sin datos de robo con violencia</h5>
+			</div>
+		{{/if}}
+	</div>
+  <div class="col-md-6">
+  	{{#if vehicleTheft}}
+		<h4> Robo a vehículo <span class="label label-default">{{vehicleTheft.length}}</span></h4>
+    <table class="table table-condensed table-sm">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Fecha</th>
+          <th class="text-center" scope="col">Gravedad</th>
+          <th class="text-center" scope="col">Denuncia Previa</th>
+        </tr>
+      </thead>
+      <tbody>
+		    {{#each vehicleTheft}}
+					<tr>
+						<td>{{date}}</td>
+						<td><span class="label label-danger"> {{value}} </span></td>
+						<td><span class="label label-warning"> {{previousComplaince}} </span></td>
+					</tr>
+        {{/each}}
+      </tbody>
+		</table>
+		{{else}}
+			<div class="jumbotron">
+				<h5> Sin datos de robo a vehículo</h5>
+			</div>
+		{{/if}}
+	</div>
+</div>
 </script>
 
 <script id="register" type="text/x-handlebars-template">
@@ -239,7 +463,6 @@
     </div>
   </div>
 </div> <!-- /container -->
-
 
 <footer class="text-muted">
   <div class="container">
