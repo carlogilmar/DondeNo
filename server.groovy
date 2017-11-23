@@ -46,6 +46,7 @@ router.post("/mobileRegister").handler { routingContext ->
   def bodyRequest = routingContext.getBodyAsJson()
   vertx.eventBus().send("com.carlogilmar.new.register", bodyRequest)
   println bodyRequest
+	vertx.eventBus().publish("com.carlogilmar.success", " Registro: <${bodyRequest.type}> agregado desde un iPhone ")
 	routingContext.response()
 	.setStatusCode(201)
 	.putHeader("content-type", "application/json; charset=utf-8")
@@ -65,6 +66,7 @@ router.post("/newRegister").handler { routingContext ->
 													value:params.value
                         ]
   println registerMessage
+	vertx.eventBus().publish("com.carlogilmar.success", " Registro: <${registerMessage.type}> agregado desde la aplicación")
 	vertx.eventBus().send("com.carlogilmar.new.register", registerMessage)
 	routingContext.response()
 	.setStatusCode(201)

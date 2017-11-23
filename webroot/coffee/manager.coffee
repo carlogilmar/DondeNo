@@ -9,6 +9,5 @@ class @.Validator
 		$('#submitRegister').click ->
 			console.log "Click para registro"
 			ApiController.add()
-			alert "Registro agregado"
 			$('#registerForm')[0].reset()
 

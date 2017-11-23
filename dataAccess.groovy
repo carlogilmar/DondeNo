@@ -13,7 +13,7 @@ vertx.eventBus().consumer("com.carlogilmar.new.register", { message ->
 		if (id.succeeded()) {
 	    println "New register added"
 			vertx.eventBus().send("com.carlogilmar.new.specific.register", message.body())
-	    vertx.eventBus().send("com.carlogilmar.success", "Registro agregado a la aplicación!!")
+	    //vertx.eventBus().send("com.carlogilmar.success", "Registro agregado a la aplicación!!")
 		} else {
 			println "Error al guardar nuevo registro"
 		}
