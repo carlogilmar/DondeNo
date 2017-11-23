@@ -20,6 +20,7 @@
     "handlebars": "^4.0.11",
     "chartist": "^0.11.0",
     "sockjs": "^0.3.4",
-    "vertx3-eventbus-client": "^3.5.0"
+    "vertx3-eventbus-client": "^3.5.0",
+    "notyf": "^2.0.1"
   }
 }

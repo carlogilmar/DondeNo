@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="third-party/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="third-party/chartist/dist/chartist.css">
+  <link rel="stylesheet" href="third-party/notyf/dist/notyf.min.css">
 </head>
 <body>
 
@@ -441,7 +442,7 @@
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="active"><a href="http://localhost:8080/static/">Inicio</a></li>
-              <li><a href="#/info">Sobre este proyecto</a></li>
+              <li><a href="http://localhost:8080/static/">Conoce los registros!</a></li>
               </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -477,10 +478,22 @@
 <script src="third-party/chartist/dist/chartist.min.js"></script>
 <script src="third-party/sockjs/sockjs.js"></script>
 <script src="third-party/vertx3-eventbus-client/vertx-eventbus.js"></script>
+<script src="third-party/notyf/dist/notyf.min.js"></script>
 <script src="coffee/manager.js"></script>
 <script src="coffee/controller.js"></script>
 <script src="coffee/app.js"></script>
 <script src="coffee/main.js"></script>
+<script>
+  var notyf = new Notyf();
+	console.log("Abriendo el verticle");
+  var eb = new EventBus("/eventbus/");
+  eb.onopen = function () {
+    eb.registerHandler("com.carlogilmar.success", function (err, msg) {
+      notyf.confirm(msg.body);
+    });
+  };
+
+</script>
 
 </body>
 </html>
