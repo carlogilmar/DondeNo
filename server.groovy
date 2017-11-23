@@ -12,7 +12,7 @@ router.route().handler(BodyHandler.create())
 
 
 // Create the event bus bridge and add it to the router.
-def opts = [outboundPermitteds:[[address:"com.makingdevs.email.success"]]]
+def opts = [outboundPermitteds:[[address:"com.carlogilmar.success"]]]
 def ebHandler = SockJSHandler.create(vertx).bridge(opts)
 router.route("/eventbus/*").handler(ebHandler)
 
